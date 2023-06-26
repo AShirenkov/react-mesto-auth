@@ -1,0 +1,26 @@
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    'name edit'
+    'descr descr';
+  align-items: baseline;
+
+  row-gap: 10px;
+  column-gap: 20px;
+
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 800px) {
+  .profile__info {
+    column-gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile__info {
+    margin-left: 28px;
+
+    row-gap: 9px;
+  }
+}

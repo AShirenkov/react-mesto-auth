@@ -1,0 +1,32 @@
+.card {
+  margin: 0;
+  padding: 0;
+  max-width: 282px;
+  display: grid;
+  grid-template-areas:
+    /* "delete delete" */
+    'img img'
+    'title like';
+  background-color: white;
+  grid-template-rows: 282px 1fr;
+
+  align-items: baseline;
+  justify-content: space-between;
+  row-gap: 25px;
+  /* column-gap: 25px; */
+
+  border-radius: 10px;
+  position: relative;
+}
+
+@media (max-width: 880px) {
+  .card {
+    width: 252px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 282px;
+  }
+}

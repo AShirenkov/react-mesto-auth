@@ -1,0 +1,12 @@
+/* *,
+::before,
+*::after {
+  outline: 1px solid red;
+} */
+
+.root {
+  background-color: #000;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,15 @@
+.card__like {
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 18px;
+  background-color: black;
+  background: url('../../../images/Heart.svg') no-repeat center;
+  background-size: 22px 18px;
+
+  border: none;
+
+  /* grid-area: like;
+  justify-self: right; */
+  /* //margin-right: 21px; */
+}

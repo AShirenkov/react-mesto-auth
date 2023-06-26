@@ -1,0 +1,20 @@
+.profile__common {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (max-width: 800px) {
+  .profile__common {
+    gap: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .profile__common {
+    gap: 26px;
+    flex-direction: column;
+
+    align-items: center;
+  }
+}

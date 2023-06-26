@@ -1,0 +1,30 @@
+.profile__descr {
+  grid-area: descr;
+  font-size: 18px;
+  line-height: 1.22;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  align-self: start;
+  justify-self: start;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .profile__descr {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+@media (max-width: 600px) {
+  .profile__descr {
+    justify-self: center;
+    text-align: center;
+  }
+}

@@ -1,0 +1,23 @@
+.header {
+  margin: 45px 200px 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+@media (max-width: 1100px) {
+  .header {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin: 28px 0 0;
+  }
+}
