@@ -1,9 +1,20 @@
 //import { useState } from 'react';
 //import React from 'react';
 import { useState, useEffect } from 'react';
+
+import { Route, Routes } from 'react-router-dom';
+
+import { useNavigate, Navigate } from 'react-router-dom';
+
 import Footer from './Footer';
 import Header from './Header';
 import Main from './Main';
+
+import Login from './Login';
+import Register from './Register';
+
+//import ProtectedRoute from './ProtectedRoute';
+
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import api from '../utils/Api';
@@ -24,6 +35,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -146,15 +159,28 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
         <Header />
-        <Main
-          onEditProfile={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditProfileClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          cards={cards}
-        />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Main
+                onEditProfile={handleEditAvatarClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
+                cards={cards}
+              />
+            }
+          />
+
+          <Route path='/sing-up' element={<Register />} />
+          <Route path='/sing-in' element={<Login />} />
+
+          <Route path='*' element={<Navigate to='/sing-in' replace />} />
+        </Routes>
+
         <Footer />
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
