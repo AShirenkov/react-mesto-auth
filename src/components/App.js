@@ -36,7 +36,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
 
   const navigate = useNavigate();
 
@@ -166,18 +166,15 @@ function App() {
             path='/'
             element={
               <ProtectedRoute
-                element={
-                  <Main
-                    onEditProfile={handleEditAvatarClick}
-                    onAddPlace={handleAddPlaceClick}
-                    onEditAvatar={handleEditProfileClick}
-                    onCardClick={handleCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}
-                    cards={cards}
-                  />
-                }
+                element={Main}
                 isLoggedIn={isLoggedIn}
+                onEditProfile={handleEditAvatarClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
+                cards={cards}
               />
             }
           />

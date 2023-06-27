@@ -1,5 +1,18 @@
-import React from 'react';
+//import React from 'react';
+import { useState } from 'react';
 function FormForAuth({ title, name, buttonName }) {
+  const [values, setValues] = useState({
+    email: '',
+    pass: ''
+  });
+  const [errorText, setSetErrorText] = useState('');
+  const handleChange = evt => {
+    const { name, value } = evt.target;
+    setValues({ ...values, [name]: value });
+  };
+  const handleSubmit = evt => {
+    evt.preventDefault();
+  };
   return (
     <form name={`form-${name}`}>
       <h2 className='auth-form__title'>{title}</h2>
@@ -10,27 +23,25 @@ function FormForAuth({ title, name, buttonName }) {
           type='email'
           placeholder='Email'
           minLength='2'
-          maxLength='40'
+          maxLength='10'
           className='auth-form__input-text'
-          //value={name || ''}
-          value=''
-          //onChange={handleChangeName}
+          value={values.email || ''}
+          onChange={handleChange}
         />
-
         <input
           required
-          name='password'
+          name='pass'
           type='password'
           placeholder='Пароль'
           minLength='2'
           maxLength='10'
           className='auth-form__input-text'
-          // value={description || ''}
-          value=''
-          //onChange={handleChangeDescription}
+          value={values.pass || ''}
+          onChange={handleChange}
+          autoComplete='off'
         />
       </div>
-
+      <h2 className='auth-form__title'>{errorText}</h2>
       <button type='submit' className='auth-form__save-button opacity-button'>
         {buttonName}
       </button>
