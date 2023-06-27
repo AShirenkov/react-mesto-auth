@@ -13,7 +13,7 @@ import Main from './Main';
 import Login from './Login';
 import Register from './Register';
 
-//import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
@@ -35,6 +35,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -163,14 +165,19 @@ function App() {
           <Route
             path='/'
             element={
-              <Main
-                onEditProfile={handleEditAvatarClick}
-                onAddPlace={handleAddPlaceClick}
-                onEditAvatar={handleEditProfileClick}
-                onCardClick={handleCardClick}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-                cards={cards}
+              <ProtectedRoute
+                element={
+                  <Main
+                    onEditProfile={handleEditAvatarClick}
+                    onAddPlace={handleAddPlaceClick}
+                    onEditAvatar={handleEditProfileClick}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    onCardDelete={handleCardDelete}
+                    cards={cards}
+                  />
+                }
+                isLoggedIn={isLoggedIn}
               />
             }
           />
