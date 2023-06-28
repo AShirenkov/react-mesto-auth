@@ -214,7 +214,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
-        <Header onLogout={handleLogout} />
+        <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} currentEmail={currentEmail} />
         <Routes>
           <Route
             path='/'

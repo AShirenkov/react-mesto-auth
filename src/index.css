@@ -4,6 +4,10 @@
 @import url(./blocks/page/__content/page__content.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__navi/header__navi.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__list-item/header__list-item.css);
+
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__card-add-button/profile__card-add-button.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
