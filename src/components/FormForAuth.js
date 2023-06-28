@@ -5,7 +5,7 @@ function FormForAuth({ title, name, buttonName, onSubmit }) {
     pass: '',
     email: ''
   });
-  const [errorText, setSetErrorText] = useState('');
+  //const [errorText, setSetErrorText] = useState('');
   const handleChange = evt => {
     const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
@@ -43,7 +43,7 @@ function FormForAuth({ title, name, buttonName, onSubmit }) {
           autoComplete='off'
         />
       </div>
-      <h2 className='auth-form__title'>{errorText}</h2>
+      {/* <h2 className='auth-form__title'>{errorText}</h2> */}
       <button type='submit' className='auth-form__save-button opacity-button'>
         {buttonName}
       </button>

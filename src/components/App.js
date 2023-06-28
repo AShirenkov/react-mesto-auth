@@ -25,12 +25,15 @@ import EditAvatarPopup from './EditAvatarPopup';
 
 import AddPlacePopup from './AddPlacePopup';
 
+import InfoTooltip from './InfoTooltip';
+
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
 
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -38,7 +41,7 @@ function App() {
   const [cards, setCards] = useState([]);
 
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isRegisteredIn, setRegisteredIn] = useState(false);
+  const [isRegisterCheck, setRegisteredCheck] = useState(null);
 
   const [currentEmail, setCurrentEmail] = useState('');
 
@@ -156,6 +159,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard({});
+    setIsInfoTooltipPopupOpen(false);
   }
   function handleCardClick(card) {
     //console.log(card._id);
@@ -168,10 +172,13 @@ function App() {
       .then(values => {
         console.log(values); //не забыть удалить
         //добавить тут вызов окна
+        setRegisteredCheck(true);
+        setIsInfoTooltipPopupOpen(true);
         navigate('/sing-in');
-        setRegisteredIn(true);
       })
       .catch(err => {
+        setRegisteredCheck(false);
+        setIsInfoTooltipPopupOpen(true);
         console.log(err);
       });
   }
@@ -259,6 +266,11 @@ function App() {
 
         <PopupWithForm name='remove-card' title='Вы уверены?' buttonName='Да' />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <InfoTooltip
+          isOpened={isInfoTooltipPopupOpen}
+          isRegisterCheck={isRegisterCheck}
+          onClose={closeAllPopups}
+        />
       </div>
     </CurrentUserContext.Provider>
   );

@@ -55,6 +55,10 @@
 @import url(./blocks/popup/__img-container/popup__img-container.css);
 @import url(./blocks/popup/_background-color_black-09/popup_background-color_black-09.css);
 
+@import url(./blocks/popup/__text-info-tooltip/popup__text-info-tooltip.css);
+
+@import url(./blocks/popup/__img-info-tooltip/popup__img-info-tooltip.css);
+
 @import url(./blocks/auth-form/auth-form.css);
 @import url(./blocks/auth-form/__input-text/auth-form__input-text.css);
 @import url(./blocks/auth-form/__title/auth-form__title.css);
