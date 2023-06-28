@@ -170,8 +170,6 @@ function App() {
       .register(password, email)
 
       .then(values => {
-        console.log(values); //не забыть удалить
-        //добавить тут вызов окна
         setRegisteredCheck(true);
         setIsInfoTooltipPopupOpen(true);
         navigate('/sing-in');
@@ -188,13 +186,14 @@ function App() {
       .login(password, email)
 
       .then(values => {
-        console.log(values); //не забыть удалить
-        //добавить тут вызов окна
         localStorage.setItem('token', values.token);
         setLoggedIn(true);
         navigate('/');
       })
       .catch(err => {
+        //не было в ТЗ но решил добавить выдачу окошка с ошибкой
+        setRegisteredCheck(false);
+        setIsInfoTooltipPopupOpen(true);
         console.log(err);
       });
   }

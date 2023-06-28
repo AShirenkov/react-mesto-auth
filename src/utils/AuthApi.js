@@ -9,13 +9,12 @@ class AuthApi {
     }
     return Promise.reject(`Ошибка сервера: ${res.status}`);
   }
-  //Нужно оптимизировать позже . убрать описание вызова _checkResponse в каждой точке
+
   _request(url, options) {
     return fetch(`${this._baseUrl}${url}`, options).then(this._checkResponse);
   }
 
   register(password, email) {
-    console.log({ password, email });
     return this._request('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
