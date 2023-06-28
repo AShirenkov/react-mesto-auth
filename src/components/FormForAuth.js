@@ -1,9 +1,9 @@
 //import React from 'react';
 import { useState } from 'react';
-function FormForAuth({ title, name, buttonName }) {
+function FormForAuth({ title, name, buttonName, onSubmit }) {
   const [values, setValues] = useState({
-    email: '',
-    pass: ''
+    pass: '',
+    email: ''
   });
   const [errorText, setSetErrorText] = useState('');
   const handleChange = evt => {
@@ -12,9 +12,11 @@ function FormForAuth({ title, name, buttonName }) {
   };
   const handleSubmit = evt => {
     evt.preventDefault();
+    onSubmit(values);
+    console.log(values);
   };
   return (
-    <form name={`form-${name}`}>
+    <form name={`form-${name}`} onSubmit={handleSubmit}>
       <h2 className='auth-form__title'>{title}</h2>
       <div className='auth-form__inputs'>
         <input
@@ -22,8 +24,8 @@ function FormForAuth({ title, name, buttonName }) {
           name='email'
           type='email'
           placeholder='Email'
-          minLength='2'
-          maxLength='10'
+          minLength='5'
+          maxLength='40'
           className='auth-form__input-text'
           value={values.email || ''}
           onChange={handleChange}
@@ -33,7 +35,7 @@ function FormForAuth({ title, name, buttonName }) {
           name='pass'
           type='password'
           placeholder='Пароль'
-          minLength='2'
+          minLength='3'
           maxLength='10'
           className='auth-form__input-text'
           value={values.pass || ''}

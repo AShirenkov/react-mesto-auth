@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import FormForAuth from './FormForAuth';
-function Register() {
+import { Link } from 'react-router-dom';
+function Register({ onRegister }) {
   return (
     <div className='auth-form'>
       <FormForAuth
@@ -11,7 +11,7 @@ function Register() {
         buttonName='Зарегистироваться'
         //isOpened={isOpen}
         //onClose={onClose}
-        //onSubmit={handleSubmit}
+        onSubmit={onRegister}
       ></FormForAuth>
       <Link className='auth-form__link  opacity-button' to='/sing-in'>
         Уже зарегистрированы? Войти

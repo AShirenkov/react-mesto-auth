@@ -1,6 +1,6 @@
 import React from 'react';
 import FormForAuth from './FormForAuth';
-function Login() {
+function Login({ onLogin }) {
   return (
     <div className='auth-form'>
       <FormForAuth
@@ -11,6 +11,7 @@ function Login() {
         //isOpened={isOpen}
         //onClose={onClose}
         //onSubmit={handleSubmit}
+        onSubmit={onLogin}
       ></FormForAuth>
     </div>
   );

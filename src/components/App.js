@@ -18,6 +18,7 @@ import ProtectedRoute from './ProtectedRoute';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import api from '../utils/Api';
+import authApi from '../utils/AuthApi';
 import EditProfilePopup from './EditProfilePopup';
 
 import EditAvatarPopup from './EditAvatarPopup';
@@ -36,7 +37,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isRegisteredIn, setRegisteredIn] = useState(false);
+
+  const [currentEmail, setCurrentEmail] = useState('');
 
   const navigate = useNavigate();
 
@@ -49,6 +53,7 @@ function App() {
       .catch(err => {
         console.log(err);
       });
+    checkToken();
   }, []);
   useEffect(() => {
     api
@@ -156,11 +161,60 @@ function App() {
     //console.log(card._id);
     setSelectedCard(card);
   }
+  function handleRegister({ pass: password, email }) {
+    authApi
+      .register(password, email)
 
+      .then(values => {
+        console.log(values); //не забыть удалить
+        //добавить тут вызов окна
+        navigate('/sing-in');
+        setRegisteredIn(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  function handleLogin({ pass: password, email }) {
+    authApi
+      .login(password, email)
+
+      .then(values => {
+        console.log(values); //не забыть удалить
+        //добавить тут вызов окна
+        localStorage.setItem('token', values.token);
+        setLoggedIn(true);
+        navigate('/');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  function checkToken() {
+    const token = localStorage.getItem('token');
+    authApi
+      .getContent(token)
+      .then(values => {
+        setCurrentEmail(values.data.email);
+        setLoggedIn(true);
+        navigate('/');
+      })
+      .catch(err => {
+        setLoggedIn(false);
+        console.log(err);
+      });
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+    navigate('/');
+  }
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
-        <Header />
+        <Header onLogout={handleLogout} />
         <Routes>
           <Route
             path='/'
@@ -179,8 +233,8 @@ function App() {
             }
           />
 
-          <Route path='/sing-up' element={<Register />} />
-          <Route path='/sing-in' element={<Login />} />
+          <Route path='/sing-up' element={<Register onRegister={handleRegister} />} />
+          <Route path='/sing-in' element={<Login onLogin={handleLogin} />} />
 
           <Route path='*' element={<Navigate to='/sing-in' replace />} />
         </Routes>
