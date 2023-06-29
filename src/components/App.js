@@ -205,17 +205,21 @@ function App() {
   }
   function checkToken() {
     const token = localStorage.getItem('token');
-    authApi
-      .checkToken(token)
-      .then(values => {
-        setCurrentEmail(values.data.email);
-        setLoggedIn(true);
-        navigate('/');
-      })
-      .catch(err => {
-        setLoggedIn(false);
-        console.log(err);
-      });
+    if (token) {
+      authApi
+        .checkToken(token)
+        .then(values => {
+          setCurrentEmail(values.data.email);
+          setLoggedIn(true);
+          navigate('/');
+        })
+        .catch(err => {
+          setLoggedIn(false);
+          console.log(err);
+        });
+    } else {
+      navigate('/sign-in');
+    }
   }
 
   function handleLogout() {
