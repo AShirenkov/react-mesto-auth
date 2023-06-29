@@ -22,16 +22,16 @@ function Header({ onLogout, isLoggedIn, currentEmail }) {
             </button>
           </li>
         )}
-        {!isLoggedIn && location.pathname === '/sing-up' && (
+        {!isLoggedIn && location.pathname === '/sign-up' && (
           <li>
-            <Link className='header__list-item opacity-button' to='/sing-in'>
+            <Link className='header__list-item opacity-button' to='/sign-in'>
               Войти
             </Link>
           </li>
         )}
-        {!isLoggedIn && location.pathname === '/sing-in' && (
+        {!isLoggedIn && location.pathname === '/sign-in' && (
           <li>
-            <Link className='header__list-item opacity-button' to='/sing-up'>
+            <Link className='header__list-item opacity-button' to='/sign-up'>
               Регистрация
             </Link>
           </li>

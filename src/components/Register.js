@@ -10,7 +10,7 @@ function Register({ onRegister }) {
         buttonName='Зарегистироваться'
         onSubmit={onRegister}
       />
-      <Link className='auth-form__link  opacity-button' to='/sing-in'>
+      <Link className='auth-form__link  opacity-button' to='/sign-in'>
         Уже зарегистрированы? Войти
       </Link>
     </div>

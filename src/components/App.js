@@ -176,7 +176,7 @@ function App() {
       .then(values => {
         setSuccessInfoTooltipStatus(true);
         setIsInfoTooltipPopupOpen(true);
-        navigate('/sing-in');
+        navigate('/sign-in');
       })
       .catch(err => {
         setSuccessInfoTooltipStatus(false);
@@ -243,10 +243,10 @@ function App() {
             }
           />
 
-          <Route path='/sing-up' element={<Register onRegister={handleRegister} />} />
-          <Route path='/sing-in' element={<Login onLogin={handleLogin} />} />
+          <Route path='/sign-up' element={<Register onRegister={handleRegister} />} />
+          <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
 
-          <Route path='*' element={<Navigate to='/sing-in' replace />} />
+          <Route path='*' element={<Navigate to='/sign-in' replace />} />
         </Routes>
 
         <Footer />
