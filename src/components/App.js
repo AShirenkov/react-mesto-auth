@@ -48,28 +48,35 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api
-      .getMyUser()
-      .then(values => {
-        setCurrentUser(values);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
     checkToken();
     // eslint-disable-next-line
   }, []);
+
   useEffect(() => {
-    api
-      .getInitialCards()
-      .then(values => {
-        setCards(values);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+    if (isLoggedIn) {
+      api
+        .getMyUser()
+        .then(values => {
+          setCurrentUser(values);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      api
+        .getInitialCards()
+        .then(values => {
+          setCards(values);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedIn]);
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
