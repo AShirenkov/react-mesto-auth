@@ -1,4 +1,3 @@
-//import React from 'react';
 import { useState } from 'react';
 function FormForAuth({ title, name, buttonName, onSubmit }) {
   const [values, setValues] = useState({

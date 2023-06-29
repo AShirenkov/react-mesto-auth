@@ -1,5 +1,3 @@
-//import { useState } from 'react';
-//import React from 'react';
 import { useState, useEffect } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -109,7 +107,7 @@ function App() {
       .setUserInfo(objUser)
       .then(values => {
         setCurrentUser(values);
-        //popupUserInfo.close();
+
         closeAllPopups();
       })
       .catch(err => {
@@ -122,7 +120,7 @@ function App() {
       .setUserAvatar(objAvatar)
       .then(values => {
         setCurrentUser(values);
-        //popupUserAvatar.close();
+
         closeAllPopups();
       })
       .catch(err => {
@@ -164,7 +162,6 @@ function App() {
     setIsInfoTooltipPopupOpen(false);
   }
   function handleCardClick(card) {
-    //console.log(card._id);
     setSelectedCard(card);
   }
   function handleRegister({ pass: password, email }) {

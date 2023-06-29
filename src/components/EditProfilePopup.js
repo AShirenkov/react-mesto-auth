@@ -1,4 +1,3 @@
-//import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import { useState, useEffect, useContext } from 'react';
 
@@ -33,7 +32,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
   return (
     <PopupWithForm
-      //title, name, chilbuttonNamedren
       name='profile'
       title='Редактировать профиль'
       buttonName='Сохранить'
