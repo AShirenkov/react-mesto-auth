@@ -3,7 +3,7 @@ function ImagePopup({ card, onClose }) {
   return (
     <div
       className={`popup popup_type_img popup_background-color_black-09 ${
-        card.name && 'popup_opened'
+        card.name ? 'popup_opened' : ''
       }`}
     >
       <div className='popup__img-container'>

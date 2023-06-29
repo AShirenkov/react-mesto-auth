@@ -10,7 +10,6 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const cardLikeButtonClassName = `card__like opacity-button ${isLiked && 'card__like_active'}`;
 
   function handleClick() {
-    //console.log(card._id);
     onCardClick(card);
   }
   function handleLikeClick() {

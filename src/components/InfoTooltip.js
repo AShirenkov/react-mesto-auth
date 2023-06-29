@@ -3,7 +3,7 @@ import logoOk from '../images/ok.png';
 import logoFail from '../images/fail.png';
 function InfoTooltip({ isOpened, onClose, isRegisterCheck }) {
   return (
-    <div className={`popup ${isOpened && 'popup_opened'}`}>
+    <div className={`popup ${isOpened ? 'popup_opened' : ''}`}>
       <div className='popup__container'>
         <div>
           <img
