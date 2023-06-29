@@ -29,7 +29,7 @@ class AuthApi {
     });
   }
 
-  getContent(jwt) {
+  checkToken(jwt) {
     return this._request('/users/me', {
       method: 'GET',
       headers: {

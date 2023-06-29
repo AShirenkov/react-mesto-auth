@@ -200,7 +200,7 @@ function App() {
   function checkToken() {
     const token = localStorage.getItem('token');
     authApi
-      .getContent(token)
+      .checkToken(token)
       .then(values => {
         setCurrentEmail(values.data.email);
         setLoggedIn(true);
