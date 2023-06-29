@@ -1,22 +1,22 @@
 import React from 'react';
 import logoOk from '../images/ok.png';
 import logoFail from '../images/fail.png';
-function InfoTooltip({ isOpened, onClose, isRegisterCheck }) {
+function InfoTooltip({ isOpened, onClose, isSuccessInfoTooltipStatus }) {
   return (
     <div className={`popup ${isOpened ? 'popup_opened' : ''}`}>
       <div className='popup__container'>
         <div>
           <img
             className='popup__img-info-tooltip'
-            src={isRegisterCheck ? logoOk : logoFail}
+            src={isSuccessInfoTooltipStatus ? logoOk : logoFail}
             alt={
-              isRegisterCheck
+              isSuccessInfoTooltipStatus
                 ? 'Вы успешно зарегистрировались!'
                 : 'Что-то пошло не так! Попробуйте ещё раз.'
             }
           />
           <p className='popup__text-info-tooltip'>
-            {isRegisterCheck
+            {isSuccessInfoTooltipStatus
               ? 'Вы успешно зарегистрировались!'
               : 'Что-то пошло не так! Попробуйте ещё раз.'}
           </p>

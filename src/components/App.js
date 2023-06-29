@@ -41,7 +41,7 @@ function App() {
   const [cards, setCards] = useState([]);
 
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isRegisterCheck, setRegisteredCheck] = useState(null);
+  const [isSuccessInfoTooltipStatus, setSuccessInfoTooltipStatus] = useState(false);
 
   const [currentEmail, setCurrentEmail] = useState('');
 
@@ -170,12 +170,12 @@ function App() {
       .register(password, email)
 
       .then(values => {
-        setRegisteredCheck(true);
+        setSuccessInfoTooltipStatus(true);
         setIsInfoTooltipPopupOpen(true);
         navigate('/sing-in');
       })
       .catch(err => {
-        setRegisteredCheck(false);
+        setSuccessInfoTooltipStatus(false);
         setIsInfoTooltipPopupOpen(true);
         console.log(err);
       });
@@ -192,7 +192,7 @@ function App() {
       })
       .catch(err => {
         //не было в ТЗ но решил добавить выдачу окошка с ошибкой
-        setRegisteredCheck(false);
+        setSuccessInfoTooltipStatus(false);
         setIsInfoTooltipPopupOpen(true);
         console.log(err);
       });
@@ -267,7 +267,7 @@ function App() {
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <InfoTooltip
           isOpened={isInfoTooltipPopupOpen}
-          isRegisterCheck={isRegisterCheck}
+          isSuccessInfoTooltipStatus={isSuccessInfoTooltipStatus}
           onClose={closeAllPopups}
         />
       </div>
