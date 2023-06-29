@@ -228,7 +228,29 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
-        <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} currentEmail={currentEmail} />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Header
+                onLogout={handleLogout}
+                isLoggedIn={isLoggedIn}
+                currentEmail={currentEmail}
+                linkRef=''
+                linkName=''
+              />
+            }
+          />
+          <Route
+            path='/sign-up'
+            element={<Header isLoggedIn={isLoggedIn} linkRef='/sign-in' linkName='Войти' />}
+          />
+          <Route
+            path='/sign-in'
+            element={<Header isLoggedIn={isLoggedIn} linkRef='/sign-up' linkName='Регистрация' />}
+          />
+        </Routes>
+
         <Routes>
           <Route
             path='/'
