@@ -54,21 +54,11 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      api
-        .getMyUser()
+      Promise.all([api.getMyUser(), api.getInitialCards()])
         .then(values => {
-          setCurrentUser(values);
+          setCurrentUser(values[0]);
+          return Promise.resolve(values[1]);
         })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }, [isLoggedIn]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      api
-        .getInitialCards()
         .then(values => {
           setCards(values);
         })
@@ -77,6 +67,7 @@ function App() {
         });
     }
   }, [isLoggedIn]);
+
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
