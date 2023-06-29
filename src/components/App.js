@@ -192,6 +192,8 @@ function App() {
       .then(values => {
         localStorage.setItem('token', values.token);
         setLoggedIn(true);
+
+        setCurrentEmail(email);
         navigate('/');
       })
       .catch(err => {
