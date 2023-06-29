@@ -56,7 +56,9 @@ function App() {
       .catch(err => {
         console.log(err);
       });
+
     checkToken();
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     api
@@ -96,7 +98,9 @@ function App() {
   function handleCardDelete(card) {
     api
       .removeCard(card._id)
-      .then(setCards(cards => cards.filter(i => i._id !== card._id)))
+      .then(() => {
+        setCards(cards => cards.filter(i => i._id !== card._id));
+      })
       .catch(err => {
         console.log(err);
       });
