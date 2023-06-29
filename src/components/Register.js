@@ -9,7 +9,7 @@ function Register({ onRegister }) {
         title='Регистрация'
         buttonName='Зарегистироваться'
         onSubmit={onRegister}
-      ></FormForAuth>
+      />
       <Link className='auth-form__link  opacity-button' to='/sing-in'>
         Уже зарегистрированы? Войти
       </Link>
