@@ -1,29 +1,50 @@
 import logo from '../images/logo.svg';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
-function Header({ onLogout, isLoggedIn, currentEmail, linkRef, linkName }) {
+function Header({ onLogout, currentEmail }) {
   return (
     <header className='header'>
       <img src={logo} alt='Лого Место Россия' className='header__logo' />
 
-      {isLoggedIn ? (
-        <ul className='header__navi'>
-          <li>
-            <p className='header__list-item header__email'></p>
-            {currentEmail}
-          </li>
-          <li>
-            <button className='header__list-item opacity-button' type='button' onClick={onLogout}>
-              Выход
-            </button>
-          </li>
-        </ul>
-      ) : (
-        <Link className='header__list-item opacity-button' to={linkRef}>
-          {linkName}
-        </Link>
-      )}
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <ul className='header__navi'>
+              <li>
+                <p className='header__list-item header__email'></p>
+                {currentEmail}
+              </li>
+              <li>
+                <button
+                  className='header__list-item opacity-button'
+                  type='button'
+                  onClick={onLogout}
+                >
+                  Выход
+                </button>
+              </li>
+            </ul>
+          }
+        />
+        <Route
+          path='/sign-up'
+          element={
+            <Link className='header__list-item opacity-button' to='/sign-in'>
+              Войти
+            </Link>
+          }
+        />
+        <Route
+          path='/sign-in'
+          element={
+            <Link className='header__list-item opacity-button' to='/sign-up'>
+              Регистрация
+            </Link>
+          }
+        />
+      </Routes>
     </header>
   );
 }
