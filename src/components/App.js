@@ -53,12 +53,9 @@ function App() {
   useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getMyUser(), api.getInitialCards()])
-        .then(values => {
-          setCurrentUser(values[0]);
-          return Promise.resolve(values[1]);
-        })
-        .then(values => {
-          setCards(values);
+        .then(([userInfo, cards]) => {
+          setCurrentUser(userInfo);
+          setCards(cards);
         })
         .catch(err => {
           console.log(err);
