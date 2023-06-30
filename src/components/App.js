@@ -222,7 +222,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
-        <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} currentEmail={currentEmail} />
+        <Header onLogout={handleLogout} currentEmail={currentEmail} />
 
         <Routes>
           <Route
